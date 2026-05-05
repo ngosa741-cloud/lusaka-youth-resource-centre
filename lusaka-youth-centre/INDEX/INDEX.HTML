@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lusaka Youth Resource Centre</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="nav-left">
+    <img src="images/logo.png" class="logo-img">
+    <span class="logo-text">Lusaka Youth Resource Centre</span>
+  </div>
+
+  <!-- Hamburger toggle -->
+  <div class="menu-toggle">☰</div>
+
+  <ul class="nav-links">
+    <li><a href="#">Home</a></li>
+
+    <!-- Portal dropdown -->
+    <li class="dropdown">
+      <a href="#">Portal ▾</a>
+      <ul class="dropdown-menu">
+        <li><a href="student-login.html">Student Portal</a></li>
+        <li><a href="staff-login.html">Staff Portal</a></li>
+        <li><a href="elearning-login.html">E-Learning Portal</a></li>
+      </ul>
+    </li>
+
+    <!-- Programmes dropdown -->
+    <li class="dropdown">
+      <a href="#courses">Programmes ▾</a>
+      <ul class="dropdown-menu">
+        <li><a href="#">ICT</a></li>
+        <li><a href="#">Food Production</a></li>
+        <li><a href="#">Hospitality</a></li>
+        <li><a href="#">Electrical</a></li>
+        <li><a href="#">Carpentry</a></li>
+        <li><a href="#">Fashion Design</a></li>
+      </ul>
+    </li>
+
+    <li><a href="#profile">About Us</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-content">
+    <h1>Empowering Youth Through Skills and Self-Reliance</h1>
+    <p>Providing Opportunities for a Brighter Future</p>
+    <a href="#courses" class="btn">Our Courses</a>
+    <a href="#contact" class="btn secondary">Get Involved</a>
+  </div>
+</header>
+
+<!-- PROFILE -->
+<section id="profile">
+  <h2>Lusaka Youth Resource Centre – Institutional Profile</h2>
+  <p>The Lusaka Youth Resource Centre equips young people with practical skills for employment and entrepreneurship.</p>
+</section>
+
+<!-- COURSES -->
+<section id="courses">
+  <h2>Courses & Training</h2>
+  <div class="course-grid">
+    <div class="course-card"><img src="images/ict.jpg"><h3>Information Technology</h3></div>
+    <div class="course-card"><img src="images/food.jpg"><h3>Food Production</h3></div>
+    <div class="course-card"><img src="images/hospitality.jpg"><h3>Hospitality Management</h3></div>
+    <div class="course-card"><img src="images/electrical.jpg"><h3>Electrical Technology</h3></div>
+    <div class="course-card"><img src="images/carpentry.jpg"><h3>Carpentry & Joinery</h3></div>
+    <div class="course-card"><img src="images/fashion.jpg"><h3>Fashion & Textile Design</h3></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2>Contact Us</h2>
+  <div class="contact-container">
+    <div class="map">
+      <iframe src="https://maps.google.com/maps?q=Lusaka%20Youth%20Resource%20Centre&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
+    </div>
+    <form id="contactForm">
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="email" id="email" placeholder="Your Email" required>
+      <textarea id="message" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Lusaka Youth Resource Centre. Accredited by TEVETA & Ministry of Youth, Sport and Arts.</p>
+</footer>
+
+<!-- JS -->
+<script>
+/* Hero Slider */
+const hero = document.querySelector('.hero');
+const images = ['images/hero-banner.jpg','images/hero2.jpg','images/hero3.jpg','images/hero4.jpg'];
+let current = 0;
+function changeBackground(){
+  hero.style.backgroundImage = `url(${images[current]})`;
+  current = (current + 1) % images.length;
+}
+changeBackground();
+setInterval(changeBackground, 5000);
+
+/* Hamburger toggle */
+const toggle = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+toggle.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+});
+
+/* Contact form validation */
+document.getElementById("contactForm").addEventListener("submit", function(event){
+  event.preventDefault();
+  let name = document.getElementById("name").value.trim();
+  let email = document.getElementById("email").value.trim();
+  let message = document.getElementById("message").value.trim();
+  if(name === "" || email === "" || message === ""){
+    alert("All fields are required!");
+    return;
+  }
+  if(!email.includes("@")){
+    alert("Please enter a valid email.");
+    return;
+  }
+  alert("Message sent successfully!");
+});
+</script>
+
+</body>
+</html>
